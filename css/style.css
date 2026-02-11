@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+:root {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img,
+video {
+    width: 100%;
+    display: block;
+}
+
+
+
+h1 {
+    font-size: 78.54px;
+}
+
+h2 {
+    font-size: 58px;
+}
+
+h3 {
+    font-size: 44.2px;
+    color: #DBCFB0;
+}
+
+h4 {
+    font-size: 33.16px;
+}
+
+p,
+li {
+    font-size: 13px;
+}
+
+
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 2%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 32px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+nav a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 3px;
+    background-color: #90B494;
+    transition: width 0.4s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+
+header {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("../images/headerarda copy.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+}
+
+.hero {
+    margin-left: 10%;
+}
+
+header h1 {
+    color: #BFC8AD;
+    text-transform: uppercase;
+}
+
+header h2 {
+    color: #DBCFB0;
+    text-transform: uppercase;
+    margin-top: -40px;
+}
+
+
+main h2 {
+    color: #BFC8AD;
+    text-align: center;
+    margin: 6vh 0 3vh;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+section article p {
+    margin-bottom: 8px;
+}
+
+
+section.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 5vh 0;
+    text-align: center;
+}
+
+section.container article {
+    position: relative;
+    padding: 40px 20px;
+}
+
+/* Blob */
+.blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vh;
+    max-width: 300px;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.blob svg {
+    width: 100%;
+}
+
+
+
+.aboutme h2 {
+    text-align: center;
+    color: #BFC8AD;
+}
+
+.about-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 6vh;
+}
+
+.about-container aside {
+    position: relative;
+}
+
+.about-image img {
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 16px;
+}
+
+.about-text {
+    max-width: 500px;
+    text-align: left;
+}
+
+.about-text ul {
+    margin-left: 20px;
+}
+
+
+
+
+
+#portfolio {
+    margin: 6vh auto;
+    max-width: 1440px;
+    padding: 0 5%;
+}
+
+#portfolio h2 {
+    color: #BFC8AD;
+    text-align: center;
+    margin: 4vh 0 2vh;
+}
+
+#portfolio h3 {
+    margin-bottom: 8px;
+}
+
+/* 3-column grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 6vh;
+}
+
+.portfolio-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-card img {
+    height: auto;
+    object-fit: contain;
+}
+
+
+.portfolio-card figcaption {
+    padding: 12px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* CONTACT FORM – MATCHES WEBSITE STYLE */
+
+.contact-form {
+    max-width: 560px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Inputs & textarea */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border: 1px solid #BFC8AD;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    background: #f9f9f7;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* Focus state */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #90B494;
+    box-shadow: 0 0 0 2px rgba(144, 180, 148, 0.2);
+}
+
+/* Button */
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: none;
+    background: #90B494;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background: #7ea684;
+    transform: translateY(-2px);
+}
+
+/* CONTACT SPLIT LAYOUT */
+
+.contact-container.split {
+    max-width: 1440px;
+    margin: 6vh auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* RIGHT SIDE TEXT */
+.contact-text {
+    position: relative;
+}
+
+.contact-text h1 {
+    color: #BFC8AD;
+    margin-bottom: 12px;
+}
+
+.contact-text p {
+    max-width: 400px;
+}
+
+/* BLOB BEHIND TEXT */
+/* BLOB BEHIND TEXT */
+.contact-blob {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    /* slightly behind the text */
+    transform: translate(-50%, -50%);
+    width: 420px;
+    opacity: 0.25;
+    z-index: -1;
+    /* behind the text */
+    pointer-events: none;
+}
+
+.contact-blob svg {
+    width: 100%;
+    height: auto;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .contact-container.split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .contact-blob {
+        left: 50%;
+        width: 320px;
+    }
+}
+
+
+footer {
+    background-image: url("../images/footer.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10%;
+}
+
+footer img {
+    width: 60px;
+}
+
+
+
+@media (max-width: 1024px) {
+
+    section.container,
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    section.container,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        margin-left: 16px;
+        font-size: 14px;
+    }
+
+    header h2 {
+        margin-top: -20px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer img {
+        width: 48px;
+    }
+}
