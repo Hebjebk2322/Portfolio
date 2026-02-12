@@ -4,7 +4,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 :root {
     font-family: "Montserrat", sans-serif;
     font-size: 13px;
@@ -27,7 +26,6 @@ video {
     width: 100%;
     display: block;
 }
-
 
 
 h1 {
@@ -53,20 +51,44 @@ li {
 }
 
 
-
 nav {
-    position: absolute;
+    position: fixed;
+    /* blijft bovenaan het scherm tijdens scrollen */
     top: 0;
     left: 0;
     width: 100%;
     padding: 24px 2%;
     display: flex;
     justify-content: flex-end;
-    z-index: 10;
+    z-index: 1000;
+    /* altijd boven andere content */
+    background: rgba(0, 0, 0, 0.4);
+    /* transparant zwart */
+    backdrop-filter: blur(10px);
+    /* blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* voor Safari */
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+/* Optioneel: kleiner maken bij scroll */
+nav.scrolled {
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 nav ul {
     display: flex;
+
+}
+
+nav ul.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.5);
+    /* 50% transparant zwart */
+    ;
 }
 
 nav ul li {
@@ -99,39 +121,90 @@ nav a:hover::after {
 }
 
 
+.hamburger {
+    display: none;
+    width: 30px;
+    height: 22px;
+    /* hoogte van hamburger */
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.hamburger span {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: white;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+/* gelijkmatige spacing tussen de drie balken */
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 18px;
+}
+
+/* active state */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+}
+
 
 header {
     position: relative;
-    min-height: 100vh;
-    background-image: url("../images/headerarda copy.svg");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    min-height: auto;
+    /* Allow the image to set the height */
+    background: none;
+    padding: 0;
+    display: block;
+    overflow: hidden;
 }
 
-.hero {
-    margin-left: 10%;
+.header-banner {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* Optioneel: tekst binnen hero beter schalen */
 header h1 {
-    color: #BFC8AD;
-    text-transform: uppercase;
+    font-size: clamp(2rem, 6vw, 78.54px);
 }
 
 header h2 {
-    color: #DBCFB0;
-    text-transform: uppercase;
-    margin-top: -40px;
+    font-size: clamp(1.5rem, 4vw, 58px);
+    margin-top: -2vh;
+    /* iets flexibeler */
 }
 
 
 main h2 {
     color: #BFC8AD;
     text-align: center;
-    margin: 6vh 0 3vh;
+    margin: 2vh 0 3vh;
+    /* Changed from 6vh to 2vh */
 }
 
 .container {
@@ -143,7 +216,6 @@ main h2 {
 section article p {
     margin-bottom: 8px;
 }
-
 
 section.container {
     display: grid;
@@ -158,7 +230,6 @@ section.container article {
     padding: 40px 20px;
 }
 
-/* Blob */
 .blob {
     position: absolute;
     top: 50%;
@@ -174,7 +245,6 @@ section.container article {
 .blob svg {
     width: 100%;
 }
-
 
 
 .aboutme h2 {
@@ -211,9 +281,6 @@ section.container article {
 }
 
 
-
-
-
 #portfolio {
     margin: 6vh auto;
     max-width: 1440px;
@@ -230,7 +297,6 @@ section.container article {
     margin-bottom: 8px;
 }
 
-/* 3-column grid */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -250,14 +316,12 @@ section.container article {
     object-fit: contain;
 }
 
-
 .portfolio-card figcaption {
     padding: 12px;
     font-size: 13px;
     text-align: center;
 }
 
-/* CONTACT FORM – MATCHES WEBSITE STYLE */
 
 .contact-form {
     max-width: 560px;
@@ -269,7 +333,6 @@ section.container article {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* Inputs & textarea */
 .contact-form input,
 .contact-form textarea {
     width: 100%;
@@ -290,14 +353,12 @@ section.container article {
     min-height: 140px;
 }
 
-/* Focus state */
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: #90B494;
     box-shadow: 0 0 0 2px rgba(144, 180, 148, 0.2);
 }
 
-/* Button */
 .contact-form button {
     width: 100%;
     padding: 14px;
@@ -317,8 +378,6 @@ section.container article {
     transform: translateY(-2px);
 }
 
-/* CONTACT SPLIT LAYOUT */
-
 .contact-container.split {
     max-width: 1440px;
     margin: 6vh auto;
@@ -329,7 +388,6 @@ section.container article {
     align-items: center;
 }
 
-/* RIGHT SIDE TEXT */
 .contact-text {
     position: relative;
 }
@@ -343,39 +401,19 @@ section.container article {
     max-width: 400px;
 }
 
-/* BLOB BEHIND TEXT */
-/* BLOB BEHIND TEXT */
 .contact-blob {
     position: absolute;
     top: 50%;
     left: 40%;
-    /* slightly behind the text */
     transform: translate(-50%, -50%);
     width: 420px;
     opacity: 0.25;
     z-index: -1;
-    /* behind the text */
     pointer-events: none;
 }
 
 .contact-blob svg {
     width: 100%;
-    height: auto;
-}
-
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .contact-container.split {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-
-    .contact-blob {
-        left: 50%;
-        width: 320px;
-    }
 }
 
 
@@ -401,29 +439,67 @@ footer img {
 }
 
 
-
-@media (max-width: 1024px) {
-
-    section.container,
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 768px) {
 
+    /* 1. Header Fix: Remove background images and forced heights */
+    header {
+        min-height: auto;
+        background-image: none !important;
+        padding-top: 75px;
+        /* Creates space for the fixed navigation */
+        display: block;
+    }
+
+    .header-banner {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* 2. Grid & Layout Adjustments */
     section.container,
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
 
-    nav ul li {
-        margin-left: 16px;
-        font-size: 14px;
+    /* 3. Navigation Adjustments */
+    nav {
+        padding: 16px 2%;
+        min-height: 60px;
     }
 
-    header h2 {
-        margin-top: -20px;
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 15px;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        pointer-events: none;
+    }
+
+    nav ul.active {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .contact-container.split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
     }
 
     .about-text {
@@ -432,9 +508,39 @@ footer img {
 }
 
 @media (max-width: 480px) {
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
+
+    /* 1. Typography scaling */
+    h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    /* 2. Header Mobile spacing */
+    header {
+        padding-top: 60px;
+    }
+
+    /* 3. Remove Blobs on small screens to keep it clean */
+    .blob,
+    .contact-blob {
+        display: none;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+
+    .socials {
+        margin-top: 40px;
+        gap: 20px;
     }
 
     footer img {
